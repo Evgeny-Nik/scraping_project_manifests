@@ -3,34 +3,34 @@ entries:
   daily-job:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-06-30T12:07:31.6590818+03:00"
+    created: "2024-06-30T15:37:24.024785158+03:00"
     description: A Helm chart for Kubernetes
     digest: 870f18e561cea4baf7f8ae3c4acca914c40af0ed790ea9d18e1cbcd6459584c4
     name: daily-job
     type: application
     urls:
-    - https://Evgeny-Nik.github.com/scraping_project_manifests/daily-job-0.1.0.tgz
+    - https://evgeny-nik.github.io/scraping_project_manifests/daily-job-0.1.0.tgz
     version: 0.1.0
   live-job:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-06-30T12:07:31.659644165+03:00"
+    created: "2024-06-30T15:37:24.02960391+03:00"
     description: A Helm chart for Kubernetes
     digest: 1544e6e7d65b808e4dff20d097c99dec37dfe4402ec9cf0f1a3afd9900a129cb
     name: live-job
     type: application
     urls:
-    - https://Evgeny-Nik.github.com/scraping_project_manifests/live-job-0.1.0.tgz
+    - https://evgeny-nik.github.io/scraping_project_manifests/live-job-0.1.0.tgz
     version: 0.1.0
   scraping-app:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-06-30T12:07:31.660655099+03:00"
+    created: "2024-06-30T15:37:24.036281257+03:00"
     description: A Helm chart for Kubernetes
-    digest: 5bd481df9bc046c60dd4eaf7c202eb3b5ff31f002c397f02b072d91496f99df0
+    digest: 548d950eb73cd6cbbedcb5841da3a86a8642f3a54eeeb5a42748060cbef09c62
     name: scraping-app
     type: application
     urls:
-    - https://Evgeny-Nik.github.com/scraping_project_manifests/scraping-app-0.1.0.tgz
+    - https://evgeny-nik.github.io/scraping_project_manifests/scraping-app-0.1.0.tgz
     version: 0.1.0
-generated: "2024-06-30T12:07:31.658523499+03:00"
+generated: "2024-06-30T15:37:24.023519409+03:00"
