@@ -17,6 +17,10 @@ env:
   kafkaSASL:
     key: client-passwords
     name: kafka-user-passwords
+  repoName: "evgenys-scraping"
+  repoUrl: "https://Evgeny-Nik.github.io/scraping_project_manifests"
+  dailyChart: "daily-job"
+  liveChart: "live-job"
 
 backend:
   name: backend
@@ -26,8 +30,7 @@ backend:
   targetPort: 5000
   imagePullPolicy: Always
   ports:
-  - nodePort: 30015
-    port: 5000
+  - port: 5000
     protocol: TCP
     targetPort: 5000
   replicas: 1
@@ -41,8 +44,7 @@ frontend:
   targetPort: 5000
   imagePullPolicy: Always
   ports:
-  - nodePort: 30019
-    port: 5000
+  - port: 5000
     protocol: TCP
     targetPort: 5000
   replicas: 1

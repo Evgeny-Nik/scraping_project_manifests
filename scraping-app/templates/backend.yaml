@@ -41,6 +41,14 @@ spec:
                 secretKeyRef:
                   key: {{ .Values.env.mongoPass.key }}
                   name: {{ .Values.env.mongoPass.name }}
+            - name: REPO_NAME
+              value: {{ quote .Values.env.repoName }}
+            - name: REPO_URL
+              value: {{ quote .Values.env.repoUrl }}
+            - name: DAILY_CHART
+              value: {{ quote .Values.env.dailyChart }}
+            - name: LIVE_CHART
+              value: {{ quote .Values.env.liveChart }}
             - name: KUBERNETES_CLUSTER_DOMAIN
               value: {{ quote .Values.kubernetesClusterDomain }}
           envFrom:
