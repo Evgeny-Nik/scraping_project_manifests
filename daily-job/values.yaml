@@ -1,0 +1,12 @@
+daily:
+  backoffLimit: 0
+  image:
+    repository: evgenyniko/scraping_project-daily
+    tag: 1.0.0
+
+env:
+  kafkaSASL:
+    key: client-passwords
+    name: my-kafka-user-passwords
+
+kubernetesClusterDomain: cluster.local

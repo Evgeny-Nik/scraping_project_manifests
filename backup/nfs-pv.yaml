@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv
+  namespace: mongodb
+  labels:
+    type: nfs
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /mnt/mongodb
+    server: 10.3.0.21
+  claimRef:
+    namespace: mongodb
+    name: mongo-mongodb

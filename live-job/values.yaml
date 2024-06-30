@@ -1,0 +1,13 @@
+live:
+  backoffLimit: 0
+  image:
+    repository: evgenyniko/scraping_project-live
+    tag: 1.0.0
+
+env:
+  discordUrl: https://discord.com/api/webhooks/1253329204490010724/FncREuKLNeyutXZBdu28ZIDEoTFiWWImBdKfnoiNMF2D2goegLetwW7JmZBw_hEr-Ft4
+  kafkaSASL:
+    key: client-passwords
+    name: my-kafka-user-passwords
+
+kubernetesClusterDomain: cluster.local

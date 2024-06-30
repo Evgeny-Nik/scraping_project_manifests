@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-connect
+  namespace: evgeny
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-connect
+  template:
+    metadata:
+      labels:
+        app: kafka-connect
+    spec:
+      containers:
+        - name: kafka-connect
+          image: evgenyniko/mongodb-kafka-base-connect:v1
+          ports:
+            - name: http
+              containerPort: 8083
+            - name: jmx
+              containerPort: 35000  # JMX port
+          env:
+            - name: KAFKA_JMX_PORT
+              value: "35000"
+            - name: KAFKA_JMX_HOSTNAME
+              value: "localhost"
+            - name: CONNECT_BOOTSTRAP_SERVERS
+              value: "broker:29092"
+            - name: CONNECT_REST_ADVERTISED_HOST_NAME
+              value: "connect"
+            - name: CONNECT_REST_PORT
+              value: "8083"
+            - name: CONNECT_GROUP_ID
+              value: "connect-cluster-group"
+            - name: CONNECT_CONFIG_STORAGE_TOPIC
+              value: "docker-connect-configs"
+            - name: CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR
+              value: "1"
+            - name: CONNECT_OFFSET_FLUSH_INTERVAL_MS
+              value: "10000"
+            - name: CONNECT_OFFSET_STORAGE_TOPIC
+              value: "docker-connect-offsets"
+            - name: CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR
+              value: "1"
+            - name: CONNECT_STATUS_STORAGE_TOPIC
+              value: "docker-connect-status"
+            - name: CONNECT_STATUS_STORAGE_REPLICATION_FACTOR
+              value: "1"
+            - name: CONNECT_ZOOKEEPER_CONNECT
+              value: "zookeeper:2181"
+            - name: CONNECT_PLUGIN_PATH
+              value: "/usr/share/java,/usr/share/confluent-hub-components"
+            - name: CONNECT_CONNECTIONS_MAX_IDLE_MS
+              value: "180000"
+            - name: CONNECT_METADATA_MAX_AGE_MS
+              value: "180000"
+            - name: CONNECT_AUTO_CREATE_TOPICS_ENABLE
+              value: "true"
+            - name: CONNECT_KEY_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+            - name: CONNECT_VALUE_CONVERTER
+              value: "org.apache.kafka.connect.json.JsonConverter"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-connect
+  namespace: evgeny
+spec:
+  selector:
+    app: kafka-connect
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8083
+      targetPort: 8083
+    - name: jmx
+      protocol: TCP
+      port: 35000   # JMX port
+      targetPort: 35000
+  # Add type and other options as needed

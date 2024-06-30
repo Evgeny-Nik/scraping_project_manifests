@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo1
+  namespace: evgeny
+spec:
+  serviceName: "mongo1"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo1
+  template:
+    metadata:
+      labels:
+        app: mongo1
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: mongo-config
+      containers:
+        - name: mongo1
+          image: evgenyniko/mongodb-kafka-base-mongod:1.0
+          ports:
+            - containerPort: 27017
+          command: ["mongod", "--replSet", "rs0", "--oplogSize", "128"]
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /data/db
+            - name: config-volume
+              mountPath: /etc/mongod.conf
+              subPath: mongod.conf
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-data
+        namespace: evgeny
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: ""
+        resources:
+          requests:
+            storage: 10Gi
+        volumeName: mongo-pv
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo1
+  namespace: evgeny
+spec:
+  selector:
+    app: mongo1
+  ports:
+    - protocol: TCP
+      port: 27017
