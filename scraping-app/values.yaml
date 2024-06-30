@@ -18,9 +18,9 @@ env:
     key: client-passwords
     name: kafka-user-passwords
   repoName: "evgenys-scraping"
-  repoUrl: "https://Evgeny-Nik.github.io/scraping_project_manifests"
-  dailyChart: "daily-job"
-  liveChart: "live-job"
+  repoUrl: "https://github.com/Evgeny-Nik/scraping_project_manifests/raw/master/docs/"
+  dailyChart: "daily-job-0.1.0.tgz"
+  liveChart: "live-job-0.1.0.tgz"
 
 backend:
   name: backend
