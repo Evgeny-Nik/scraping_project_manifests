@@ -16,7 +16,7 @@ env:
     name: mongo-mongodb
   kafkaSASL:
     key: client-passwords
-    name: my-kafka-user-passwords
+    name: kafka-user-passwords
 
 backend:
   name: backend
