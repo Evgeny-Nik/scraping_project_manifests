@@ -47,7 +47,7 @@ spec:
             - configMapRef:
                 name: app-env
           ports:
-            - containerPort: {{ .Values.backend.containerPort }}
+            - containerPort: {{ .Values.backend.targetPort }}
           resources: {}
 
 ---
