@@ -48,7 +48,7 @@ service:
 
 ingress:
   className: nginx
-  host: ".example.com"
+  host: "example.com"
   path: /
   pathType: Prefix
 
