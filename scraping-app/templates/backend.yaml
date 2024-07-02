@@ -54,21 +54,5 @@ spec:
           envFrom:
             - configMapRef:
                 name: app-env
-          ports:
-            - containerPort: {{ .Values.backend.targetPort }}
           resources: {}
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "scraping-app.fullname" . }}-backend
-  labels:
-    {{- include "scraping-app.labels" . | nindent 4 }}
-spec:
-  type: {{ .Values.backend.type }}
-  selector:
-    app: backend
-    {{- include "scraping-app.selectorLabels" . | nindent 4 }}
-  ports:
-    {{- .Values.backend.ports | toYaml | nindent 2 }}
