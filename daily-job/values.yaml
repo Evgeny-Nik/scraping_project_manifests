@@ -7,6 +7,6 @@ daily:
 env:
   kafkaSASL:
     key: client-passwords
-    name: my-kafka-user-passwords
+    name: kafka-user-passwords
 
 kubernetesClusterDomain: cluster.local
