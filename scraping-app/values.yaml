@@ -47,6 +47,7 @@ service:
   type: ClusterIP
 
 ingress:
+  className: nginx
   host: ".example.com"
   path: /
   pathType: Prefix
