@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "daily-job.labels" . | nindent 4 }}
 spec:
+  ttlSecondsAfterFinished: {{ .Values.daily.ttlSecondsAfterFinished }}
   backoffLimit: {{ .Values.daily.backoffLimit }}
   template:
     metadata:

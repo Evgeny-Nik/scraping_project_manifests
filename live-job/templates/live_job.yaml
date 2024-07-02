@@ -6,6 +6,7 @@ metadata:
     {{- include "live-job.labels" . | nindent 4 }}
 spec:
   backoffLimit: {{ .Values.live.backoffLimit }}
+  ttlSecondsAfterFinished: {{ .Values.live.ttlSecondsAfterFinished }}
   template:
     metadata:
       labels:
