@@ -8,12 +8,12 @@ spec:
   replicas: {{ .Values.frontend.replicas }}
   selector:
     matchLabels:
-      app: frontend
+      app: {{ .Values.frontend.name }}
     {{- include "scraping-app.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: frontend
+        app: {{ .Values.frontend.name }}
       {{- include "scraping-app.selectorLabels" . | nindent 8 }}
     spec:
       containers:
@@ -39,17 +39,3 @@ spec:
             - containerPort: {{ .Values.frontend.targetPort }}
           resources: {}
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "scraping-app.fullname" . }}-frontend
-  labels:
-    {{- include "scraping-app.labels" . | nindent 4 }}
-spec:
-  type: {{ .Values.frontend.type }}
-  selector:
-    app: frontend
-    {{- include "scraping-app.selectorLabels" . | nindent 4 }}
-  ports:
-    {{- .Values.frontend.ports | toYaml | nindent 2 }}

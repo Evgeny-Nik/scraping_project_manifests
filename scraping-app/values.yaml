@@ -37,11 +37,18 @@ frontend:
     tag: 1.0.0
   targetPort: 5000
   imagePullPolicy: Always
-  ports:
-  - port: 5000
-    protocol: TCP
-    targetPort: 5000
   replicas: 1
-  type: NodePort
+
+service:
+  name: http
+  port: 5000
+  protocol: TCP
+  targetPort: 5000
+  type: ClusterIP
+
+ingress:
+  host: ".example.com"
+  path: /
+  pathType: Prefix
 
 kubernetesClusterDomain: cluster.local
