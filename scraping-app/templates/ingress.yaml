@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: {{ include "scraping-app.fullname" . }}-ingress
   labels:
     app: {{ .Values.frontend.name }}
-  name: {{ include "scraping-app.fullname" . }}-ingress
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   rules:
