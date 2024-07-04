@@ -4,7 +4,7 @@ live:
   image:
     repository: evgenyniko/scraping_project-live
     tag: 1.0.0
-  imagePullPolicy: Always
+  imagePullPolicy: IfNotPresent
 
 env:
   discordUrl: https://discord.com/api/webhooks/1253329204490010724/FncREuKLNeyutXZBdu28ZIDEoTFiWWImBdKfnoiNMF2D2goegLetwW7JmZBw_hEr-Ft4
