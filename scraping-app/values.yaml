@@ -27,7 +27,7 @@ backend:
   image:
     repository: evgenyniko/scraping_project-backend
     tag: 1.0.1
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   replicas: 1
 
 frontend:
@@ -36,7 +36,7 @@ frontend:
     repository: evgenyniko/scraping_project-frontend
     tag: 1.0.0
   targetPort: 5000
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   replicas: 1
 
 service:
