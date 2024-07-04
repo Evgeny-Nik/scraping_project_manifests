@@ -15,6 +15,7 @@ spec:
       containers:
         - name: my-container
           image: {{ .Values.live.image.repository }}:{{ .Values.live.image.tag | default .Chart.AppVersion }}
+          imagePullPolicy: {{ .Values.live.imagePullPolicy | quote }}
           env:
             - name: DISCORD_URL
               value: {{ quote .Values.env.discordUrl }}

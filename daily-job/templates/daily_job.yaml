@@ -15,6 +15,7 @@ spec:
       containers:
         - name: my-container
           image: {{ .Values.daily.image.repository }}:{{ .Values.daily.image.tag | default .Chart.AppVersion }}
+          imagePullPolicy: {{ .Values.daily.imagePullPolicy | quote }}
           env:
             - name: POD_NAMESPACE
               valueFrom:
